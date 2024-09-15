@@ -19,6 +19,13 @@ from llama_index.embeddings.ollama import OllamaEmbedding
 from llama_index.llms.ollama import Ollama
 from llama_index.core import Settings, VectorStoreIndex, StorageContext
 
+
+
+import pymupdf4llm
+from llama_index.core import Document
+from llama_index.core.node_parser import SimpleNodeParser
+import pandas as pd
+from llama_index.vector_stores.qdrant import QdrantVectorStore
 import qdrant_client
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.postprocessor.flag_embedding_reranker import FlagEmbeddingReranker
