@@ -80,8 +80,10 @@ class Pipeline:
 
         Settings.client = qdrant_client.QdrantClient(url=self.valves.Qdrant_BASE_URL)
 
+        print('======== QdrantVectorStore ================')
         Settings.vector_store = QdrantVectorStore(client=Settings.client, collection_name=self.valves.Qdrant_VectorStore)
 
+        print('======== QdrantVectorStore ================')
         # inital Reranker
         Settings.reranker = FlagEmbeddingReranker(
             top_n=2,
