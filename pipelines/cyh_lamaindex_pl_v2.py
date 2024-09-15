@@ -90,8 +90,7 @@ class Pipeline:
 
         self.llm = Ollama(
             model=self.valves.LLAMAINDEX_MODEL_NAME,
-            base_url=self.valves.LLAMAINDEX_OLLAMA_BASE_URL,
-            request_timeout=120.0
+            base_url=self.valves.LLAMAINDEX_OLLAMA_BASE_URL
         )
         
 
