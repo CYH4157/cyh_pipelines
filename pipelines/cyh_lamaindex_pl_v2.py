@@ -45,12 +45,10 @@ class Pipeline:
         Flag_Embedding_Reranker: str
 
     def __init__(self):
-        self.type = "pipe"
+        self.llm = None
         self.id = "cyh_lamaindex_pl"
         self.name = "cyh_lamaindex_pl"
-        #self.documents = None
-        #self.index = None
-        self.llm = None
+        
         self.valves = self.Valves(
             **{
                 "LLAMAINDEX_OLLAMA_BASE_URL": os.getenv("LLAMAINDEX_OLLAMA_BASE_URL", "http://172.17.0.1:11434"),
