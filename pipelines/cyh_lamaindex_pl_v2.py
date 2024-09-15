@@ -50,7 +50,7 @@ class Pipeline:
         self.name = "cyh_lamaindex_pl"
         #self.documents = None
         #self.index = None
-
+        self.llm = None
         self.valves = self.Valves(
             **{
                 "LLAMAINDEX_OLLAMA_BASE_URL": os.getenv("LLAMAINDEX_OLLAMA_BASE_URL", "http://172.17.0.1:11434"),
@@ -90,7 +90,7 @@ class Pipeline:
         )
         print('======== Reranker ================')
 
-        Settings.llm = Ollama(
+        self.llm = Ollama(
             model=self.valves.LLAMAINDEX_MODEL_NAME,
             base_url=self.valves.LLAMAINDEX_OLLAMA_BASE_URL,
             request_timeout=120.0
@@ -161,7 +161,7 @@ class Pipeline:
         #response = llm.complete(ques_str)
 
         try:
-            response = llm.complete(ques_str)
+            response = self.llm.complete(ques_str)
         except Exception as e:
             print(f"Failed to response: {e}")
 
