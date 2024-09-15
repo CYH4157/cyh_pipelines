@@ -141,7 +141,14 @@ class Pipeline:
 
 
         retrieve_res = self.retriever_engine.retrieve(user_message)
-        context_str = retrieve_res[0].node.excluded_embed_metadata_keys[0] if retrieve_res else "No relevant context found."
+        #context_str = retrieve_res[0].node.excluded_embed_metadata_keys[0] if retrieve_res else "No relevant context found."
+
+        try:
+            context_str = retrieve_res[0].node.excluded_embed_metadata_keys[0] if retrieve_res else "No relevant context found."
+        except Exception as e:
+            print(f"Failed to context_str: {e}")
+
+
         ques_str = (
             f"我提供的上下文內容如下：\n"
             f"---------------------\n"
@@ -151,7 +158,12 @@ class Pipeline:
         )
 
         # Display search results and model responses
-        response = llm.complete(ques_str)
+        #response = llm.complete(ques_str)
+
+        try:
+            response = llm.complete(ques_str)
+        except Exception as e:
+            print(f"Failed to response: {e}")
 
         print("Retrieve Results:", retrieve_res)
         print("Response:", response.text)
