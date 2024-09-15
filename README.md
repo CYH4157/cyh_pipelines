@@ -2,9 +2,36 @@
   <a href="#"><img src="./header.png" alt="Pipelines Logo"></a>
 </p>
 
+
 # Pipelines: UI-Agnostic OpenAI API Plugin Framework
 
 Welcome to **Pipelines**, an [Open WebUI](https://github.com/open-webui) initiative. Pipelines bring modular, customizable workflows to any UI client supporting OpenAI API specs – and much more! Easily extend functionalities, integrate unique logic, and create dynamic workflows with just a few lines of code.
+
+## 前置作業
+
+1. Start pipeline container
+
+```sh
+git clone 
+docker build -t cyh-pipelines:latest .
+docker run -d -p 9098:9099 --add-host=host.docker.internal:host-gateway -v /home/ubuntu/cyh_pipelines:/app/pipelines --name pipelines2 --restart always cyh-pipelines
+```
+
+2. hydra docker-compose to get the qdrant container started
+put your Qdrant embedding data
+```sh
+mkdir storage_Qdrant
+mv -r your_embedding_data ./storage_Qdrant/collections/your_embedding_data
+```
+
+3. Ollama Download model
+
+```sh
+docker exec -it ollama ollama pull llama3.1:8b-instruct-fp16
+docker exec -it ollama ollama pull chatfire/bge-m3:q8_0
+
+```
+
 
 ## 🚀 Why Choose Pipelines?
 
