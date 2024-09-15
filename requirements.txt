@@ -61,5 +61,6 @@ playwright
 beautifulsoup4
 
 # Llama Index for RAG
-llama-index
+llama-index==0.10.56
 llama-index-llms-ollama
+llama-index-embeddings-ollama
