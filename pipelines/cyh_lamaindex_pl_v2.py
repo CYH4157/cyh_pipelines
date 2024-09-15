@@ -85,7 +85,7 @@ class Pipeline:
 
         print('======== QdrantVectorStore ================')
         # inital Reranker
-        Settings.reranker = FlagEmbeddingReranker(
+        reranker = FlagEmbeddingReranker(
             top_n=2,
             model=self.valves.Flag_Embedding_Reranker
         )
