@@ -80,16 +80,15 @@ class Pipeline:
 
         Settings.client = qdrant_client.QdrantClient(url=self.valves.Qdrant_BASE_URL)
 
-        print('======== QdrantVectorStore ================')
         Settings.vector_store = QdrantVectorStore(client=Settings.client, collection_name=self.valves.Qdrant_VectorStore)
 
-        print('======== QdrantVectorStore ================')
+        print('======== Reranker ================')
         # inital Reranker
         reranker = FlagEmbeddingReranker(
             top_n=2,
             model=self.valves.Flag_Embedding_Reranker
         )
-
+        print('======== Reranker ================')
 
         Settings.llm = Ollama(
             model=self.valves.LLAMAINDEX_MODEL_NAME,
