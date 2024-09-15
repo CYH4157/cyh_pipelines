@@ -12,9 +12,10 @@ Welcome to **Pipelines**, an [Open WebUI](https://github.com/open-webui) initiat
 1. Start pipeline container
 
 ```sh
-git clone 
+git clone https://github.com/CYH4157/cyh_pipelines.git
+cd cyh_pipelines
 docker build -t cyh-pipelines:latest .
-docker run -d -p 9098:9099 --add-host=host.docker.internal:host-gateway -v /home/ubuntu/cyh_pipelines:/app/pipelines --name pipelines2 --restart always cyh-pipelines
+docker run -d -p 9098:9099 --add-host=host.docker.internal:host-gateway -v /home/ubuntu/cyh_pipelines:/app/pipelines --name pipelines --restart always cyh-pipelines
 ```
 
 2. hydra docker-compose to get the qdrant container started
