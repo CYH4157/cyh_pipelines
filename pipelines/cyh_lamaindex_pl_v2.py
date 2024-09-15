@@ -54,25 +54,6 @@ class Pipeline:
 
         # self.documents = SimpleDirectoryReader("/app/backend/data").load_data()
         # self.index = VectorStoreIndex.from_documents(self.documents)
-        pass
-
-    async def on_shutdown(self):
-        # This function is called when the server is stopped.
-        pass
-
-    def pipe(
-        self, user_message: str, model_id: str, messages: List[dict], body: dict
-    ) -> Union[str, Generator, Iterator]:
-        # This is where you can add your custom RAG pipeline.
-        # Typically, you would retrieve relevant information from your knowledge base and synthesize it to generate a response.
-
-        print(messages)
-        print(user_message)
-        print('=============  ollama setting =============')
-        # Settings.embed_model = OllamaEmbedding(
-        #     model_name=self.valves.LLAMAINDEX_EMBEDDING_MODEL_NAME,
-        #     base_url=self.valves.LLAMAINDEX_OLLAMA_BASE_URL,
-        # )
 
         Settings.embed_model = OllamaEmbedding(
             model_name=self.valves.LLAMAINDEX_EMBEDDING_MODEL_NAME,
@@ -100,12 +81,11 @@ class Pipeline:
 
 
         print('=============  ollama setting finished =============')
-        #documents = SimpleDirectoryReader("./data").load_data()
-        #index = VectorStoreIndex.from_documents(documents)
+
 
         index = VectorStoreIndex.from_vector_store(embed_model=Settings.embed_model, vector_store=Settings.vector_store)
 
-        retriever_engine = index.as_retriever(
+        self.retriever_engine = index.as_retriever(
             retriever_mode='embeddings',
             similarity_top_k=2,
             node_postprocessors=[reranker],
@@ -113,11 +93,39 @@ class Pipeline:
         )
 
 
+
+        pass
+
+    async def on_shutdown(self):
+        # This function is called when the server is stopped.
+        pass
+
+    def pipe(
+        self, user_message: str, model_id: str, messages: List[dict], body: dict
+    ) -> Union[str, Generator, Iterator]:
+        # This is where you can add your custom RAG pipeline.
+        # Typically, you would retrieve relevant information from your knowledge base and synthesize it to generate a response.
+
+        print(messages)
+        print(user_message)
+        # print('=============  ollama setting =============')
+        # Settings.embed_model = OllamaEmbedding(
+        #     model_name=self.valves.LLAMAINDEX_EMBEDDING_MODEL_NAME,
+        #     base_url=self.valves.LLAMAINDEX_OLLAMA_BASE_URL,
+        # )
+
+
+        #documents = SimpleDirectoryReader("./data").load_data()
+        #index = VectorStoreIndex.from_documents(documents)
+
+
+
+
         # query_engine = self.index.as_query_engine(streaming=True)
         # response = query_engine.query(user_message)
 
 
-        retrieve_res = retriever_engine.retrieve(user_message)
+        retrieve_res = self.retriever_engine.retrieve(user_message)
         context_str = retrieve_res[0].node.excluded_embed_metadata_keys[0] if retrieve_res else "No relevant context found."
         ques_str = (
             f"我提供的上下文內容如下：\n"
