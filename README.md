@@ -30,9 +30,27 @@ mv -r your_embedding_data ./storage_Qdrant/collections/your_embedding_data
 ```sh
 docker exec -it ollama ollama pull llama3.1:8b-instruct-fp16
 docker exec -it ollama ollama pull chatfire/bge-m3:q8_0
-
 ```
 
+4. Setting openwebui admin panel
+go to open webui and connect with pipeline container
+http://your_open_webui_ip:3000/
+<img width="1900" alt="image" src="https://github.com/user-attachments/assets/0ca15a36-5ff5-475f-ab2c-9c6e4d4168c4">
+
+```sh
+# default passwd
+0p3n-w3bu!
+```
+
+5. upload your code or git url
+
+<img width="1500" alt="image" src="https://github.com/user-attachments/assets/88d2dd41-b3e3-482b-8985-98194669760a">
+
+6. find your models
+
+<img width="1912" alt="image" src="https://github.com/user-attachments/assets/9fd0bd5b-f080-48f4-a25f-8f18fe084979">
+
+   
 
 ## 🚀 Why Choose Pipelines?
 
