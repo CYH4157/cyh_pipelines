@@ -60,7 +60,16 @@ selenium
 playwright
 beautifulsoup4
 
+
 # Llama Index for RAG
 llama-index==0.10.56
 llama-index-llms-ollama
 llama-index-embeddings-ollama
+
+llama-index-vector-stores-postgres
+llama-index-vector-stores-qdrant
+docx2txt
+llama-index-postprocessor-flag-embedding-reranker
+git+https://github.com/FlagOpen/FlagEmbedding.git
+pymupdf4llm
+peft
