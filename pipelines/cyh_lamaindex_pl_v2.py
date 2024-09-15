@@ -1,7 +1,7 @@
 """
-title: Llama Index Ollama Pipeline
-author: open-webui
-date: 2024-05-30
+title: cyh Llama Index Ollama Pipeline
+author: cyh-nchc
+date: 2024-09-16
 version: 1.0
 license: MIT
 description: A pipeline for retrieving relevant information from a knowledge base using the Llama Index library with Ollama embeddings.
@@ -128,9 +128,6 @@ class Pipeline:
         #documents = SimpleDirectoryReader("./data").load_data()
         #index = VectorStoreIndex.from_documents(documents)
 
-
-
-
         # query_engine = self.index.as_query_engine(streaming=True)
         # response = query_engine.query(user_message)
 
@@ -152,4 +149,4 @@ class Pipeline:
         print("Response:", response.text)
 
 
-        return response.response_gen
+        return response.text
