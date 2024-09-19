@@ -39,7 +39,6 @@ class Pipeline:
     class Valves(BaseModel):
         LLAMAINDEX_OLLAMA_BASE_URL: str
         LLAMAINDEX_MODEL_NAME: str
-        LLAMAINDEX_EMBEDDING_MODEL_NAME: str
         Qdrant_BASE_URL: str
         Qdrant_VectorStore: str
         Flag_Embedding_Reranker: str
