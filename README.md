@@ -25,10 +25,10 @@ docker run -d -p 9099:9099 --add-host=host.docker.internal:host-gateway -v $(pwd
 
 
 2. hydra docker-compose to get the qdrant container started
-put your Qdrant embedding data
+put your qdrant embedding data
 ```sh
-mkdir storage_Qdrant
-mv -r your_embedding_data ./storage_Qdrant/collections/your_embedding_data
+mkdir storage_qdrant
+mv -r your_embedding_data ./storage_qdrant/collections/your_embedding_data
 ```
 
 3. Ollama Download model
