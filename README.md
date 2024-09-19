@@ -7,7 +7,7 @@
 
 Welcome to **Pipelines**, an [Open WebUI](https://github.com/open-webui) initiative. Pipelines bring modular, customizable workflows to any UI client supporting OpenAI API specs – and much more! Easily extend functionalities, integrate unique logic, and create dynamic workflows with just a few lines of code.
 
-## 前置作業
+## Preparation
 
 1. Start pipeline container
 
@@ -15,8 +15,14 @@ Welcome to **Pipelines**, an [Open WebUI](https://github.com/open-webui) initiat
 git clone https://github.com/CYH4157/cyh_pipelines.git
 cd cyh_pipelines
 docker build -t cyh-pipelines:latest .
-docker run -d -p 9099:9099 --add-host=host.docker.internal:host-gateway -v $(pwd)/cyh_pipelines:/app --name pipelines --restart always cyh-pipelines
+docker run -d -p 9099:9099 --add-host=host.docker.internal:host-gateway -v $(pwd):/app --name pipelines --restart always cyh-pipelines
 ```
+---
+#### ⚠️ warning： Please note that the current path is 'your_path/cyh_pipeline'.
+---
+
+
+
 
 2. hydra docker-compose to get the qdrant container started
 put your Qdrant embedding data
