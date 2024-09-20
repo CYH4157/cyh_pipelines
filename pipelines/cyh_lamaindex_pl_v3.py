@@ -43,14 +43,7 @@ class Pipeline:
         
         self.valves = self.Valves(
             **{
-                "LLAMAINDEX_OLLAMA_BASE_URL": os.getenv("LLAMAINDEX_OLLAMA_BASE_URL", "http://172.17.0.1:11434"),
                 "LLAMAINDEX_MODEL_NAME": os.getenv("LLAMAINDEX_MODEL_NAME", "llama3.1:8b-instruct-fp16"),
-                "LLAMAINDEX_EMBEDDING_MODEL_NAME": os.getenv("LLAMAINDEX_EMBEDDING_MODEL_NAME", "chatfire/bge-m3:q8_0"),
-                "Qdrant_BASE_URL": os.getenv("Qdrant_BASE_URL", "http://172.17.0.1:6333"),
-                "Qdrant_VectorStore": os.getenv("Qdrant_VectorStore", "20240906_ly_256"),
-                "Flag_Embedding_Reranker": os.getenv("Flag_Embedding_Reranker", "BAAI/bge-reranker-large"),
-                
-
             }
         )
 
@@ -65,26 +58,26 @@ class Pipeline:
 
 
         Settings.embed_model = OllamaEmbedding(
-            model_name=self.valves.LLAMAINDEX_EMBEDDING_MODEL_NAME,
-            base_url=self.valves.LLAMAINDEX_OLLAMA_BASE_URL,
+            model_name="chatfire/bge-m3:q8_0",
+            base_url="http://172.17.0.1:11434",
             ollama_additional_kwargs={"mirostat": 0}
         )        
 
-        Settings.client = qdrant_client.QdrantClient(url=self.valves.Qdrant_BASE_URL)
+        Settings.client = qdrant_client.QdrantClient(url="http://172.17.0.1:6333")
 
-        Settings.vector_store = QdrantVectorStore(client=Settings.client, collection_name=self.valves.Qdrant_VectorStore)
+        Settings.vector_store = QdrantVectorStore(client=Settings.client, collection_name="20240906_ly_256")
 
         print('======== Reranker ================')
         # inital Reranker
         reranker = FlagEmbeddingReranker(
             top_n=2,
-            model=self.valves.Flag_Embedding_Reranker
+            model="BAAI/bge-reranker-large"
         )
         print('======== Reranker ================')
 
         self.llm = Ollama(
-            model=self.valves.LLAMAINDEX_MODEL_NAME,
-            base_url=self.valves.LLAMAINDEX_OLLAMA_BASE_URL
+            model='llama3.1:8b-instruct-fp16',
+            base_url="http://172.17.0.1:11434"
         )
         
 
