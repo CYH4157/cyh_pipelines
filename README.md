@@ -38,7 +38,9 @@ mv -r your_embedding_data ./storage_qdrant/collections/your_embedding_data
 docker exec -it ollama ollama pull llama3.1:8b-instruct-fp16
 docker exec -it ollama ollama pull chatfire/bge-m3:q8_0
 ```
-
+---
+#### ⚠️ warning： Please note ollama container version.
+---
 4. Setting openwebui admin panel
 go to open webui and connect with pipeline container
 http://your_open_webui_ip:3000/
