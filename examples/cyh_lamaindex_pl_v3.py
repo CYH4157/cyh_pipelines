@@ -59,11 +59,11 @@ class Pipeline:
 
         Settings.embed_model = OllamaEmbedding(
             model_name="chatfire/bge-m3:q8_0",
-            base_url="http://172.17.0.1:11434",
+            base_url="http://ollama:11434",
             ollama_additional_kwargs={"mirostat": 0}
         )        
 
-        Settings.client = qdrant_client.QdrantClient(url="http://172.17.0.1:6333")
+        Settings.client = qdrant_client.QdrantClient(url="http://qdrant:6333")
 
         Settings.vector_store = QdrantVectorStore(client=Settings.client, collection_name="20240906_ly_256")
 
@@ -77,7 +77,7 @@ class Pipeline:
 
         self.llm = Ollama(
             model='llama3.1:8b-instruct-fp16',
-            base_url="http://172.17.0.1:11434"
+            base_url="http://ollama:11434"
         )
         
 
