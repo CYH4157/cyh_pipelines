@@ -65,7 +65,7 @@ class Pipeline:
 
         Settings.client = qdrant_client.QdrantClient(url="http://172.17.0.1:6333")
 
-        Settings.vector_store = QdrantVectorStore(client=client, collection_name="20240906_ly_256")
+        Settings.vector_store = QdrantVectorStore(client=Settings.client, collection_name="20240906_ly_256")
 
         print('======== Reranker ================')
         # inital Reranker
