@@ -112,7 +112,7 @@ services:
     ports:
       - "6333:6333"
     volumes:
-      - /home/ubuntu/storage_qdrant:/qdrant/storage
+      - /home/ubuntu/storage_qdrant:/qdrant/storage/collections
       - /qdrant:/qdrant/storage
     networks:
       - llm_network 
