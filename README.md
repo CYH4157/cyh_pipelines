@@ -15,7 +15,7 @@ Welcome to **Pipelines**, an [Open WebUI](https://github.com/open-webui) initiat
 git clone https://github.com/CYH4157/cyh_pipelines.git
 cd cyh_pipelines
 docker build -t cyh-pipelines:latest .
-docker run -d -p 9099:9099 --add-host=host.docker.internal:host-gateway -v $(pwd):/app --name pipelines --network hydra_llm_network --restart always pipelines
+docker run -d -p 9099:9099 --add-host=host.docker.internal:host-gateway -v $(pwd):/app --name pipelines --network hydra_llm_network --restart always cyh-pipelines
 ```
 ---
 #### ⚠️ warning： Please note that the current path is 'your_path/cyh_pipeline'.
